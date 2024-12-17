@@ -15,6 +15,7 @@ class MainApp extends StatefulWidget {
 }
 
 class _MainAppState extends State<MainApp> {
+  bool owner = false;
   int _activeMenuButton = 0;
   List<String> urls = [
     "https://thumbs.dreamstime.com/b/portrait-handsome-smiling-young-man-folded-arms-smiling-joyful-cheerful-men-crossed-hands-isolated-studio-shot-172869765.jpg",
@@ -207,9 +208,11 @@ class _MainAppState extends State<MainApp> {
                               children: List.generate(
                                 urls.length,
                                 (index) {
+                                  index == 0 ? owner = true : owner = false;
                                   return Row(
                                     children: [
                                       StoryContainer(
+                                        owner: owner,
                                         photoUrl: urls[index],
                                       ),
                                       const SizedBox(
@@ -259,32 +262,86 @@ class StoryContainer extends StatelessWidget {
           Positioned(
             bottom: -9,
             right: 50,
-            child: Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(5),
-                border: Border.all(
-                  width: 1,
-                  color: Colors.white,
-                ),
-                color: const Color.fromARGB(255, 0, 134, 244),
-              ),
-              height: 20,
-              width: 20,
-              child: Center(
-                child: GestureDetector(
-                  onTap: () {},
-                  child: const Icon(
-                    Icons.add,
-                    color: Colors.white,
-                    size: 19,
-                  ),
-                ),
-              ),
+            child: WatchAddStory(
+              owner: owner,
+              url: photoUrl,
             ),
           ),
         ],
       ),
     );
+  }
+}
+
+class WatchAddStory extends StatelessWidget {
+  final bool owner;
+  final String url;
+  const WatchAddStory({
+    super.key,
+    required this.owner,
+    required this.url,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return owner
+        ? Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(5),
+              border: Border.all(
+                width: 1,
+                color: Colors.white,
+              ),
+              color: const Color.fromARGB(255, 0, 134, 244),
+            ),
+            height: 20,
+            width: 20,
+            child: Center(
+              child: GestureDetector(
+                onTap: () {},
+                child: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 19,
+                ),
+              ),
+            ),
+          )
+        : Container(
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(100),
+              border: Border.all(
+                width: 1,
+                color: Colors.white,
+              ),
+              color: const Color.fromARGB(255, 0, 134, 244),
+            ),
+            height: 30,
+            width: 30,
+            child: Center(
+              child: GestureDetector(
+                onTap: () {},
+                child: Container(
+                  height: 30,
+                  width: 30,
+                  decoration: BoxDecoration(
+                    image: DecorationImage(
+                        fit: BoxFit.cover, image: NetworkImage(url)),
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(
+                      width: 1,
+                      color: const Color.fromARGB(255, 213, 57, 169),
+                    ),
+                    color: const Color.fromARGB(255, 0, 134, 244),
+                  ),
+                  // child: Image(
+                  //   fit: BoxFit.cover,
+                  //   image: NetworkImage(url),
+                  // )),
+                ),
+              ),
+            ),
+          );
   }
 }
 
