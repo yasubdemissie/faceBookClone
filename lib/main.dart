@@ -28,179 +28,186 @@ class _MainAppState extends State<MainApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        // appBar: AppBar(
-        //   title: ,
-        // ),
         body: SafeArea(
           child: Padding(
-            padding: EdgeInsets.all(11.0),
+            padding: const EdgeInsets.symmetric(vertical: 10),
             child: Column(
               children: [
-                const Row(
+                Column(
                   children: [
-                    Text(
-                      "faceBook",
-                      style: TextStyle(
-                        color: Color.fromARGB(255, 38, 157, 255),
-                        fontSize: 20,
-                      ),
-                    ),
-                    Spacer(),
-                    Icon(Icons.facebook_sharp,
-                        size: 34, color: Color.fromARGB(255, 0, 140, 255)),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-                  children: [
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _activeMenuButton = 0;
-                          });
-                        },
-                        color: _activeMenuButton == 0
-                            ? Colors.blue[400]
-                            : Colors.black,
-                        icon: const Icon(Icons.home)),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _activeMenuButton = 1;
-                          });
-                        },
-                        color: _activeMenuButton == 1
-                            ? Colors.blue[400]
-                            : Colors.black,
-                        icon: const Icon(Icons.group)),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _activeMenuButton = 2;
-                          });
-                        },
-                        color: _activeMenuButton == 2
-                            ? Colors.blue[400]
-                            : Colors.black,
-                        icon: const Icon(Icons.person)),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _activeMenuButton = 3;
-                            print(_activeMenuButton);
-                          });
-                        },
-                        color: _activeMenuButton == 3
-                            ? Colors.blue[400]
-                            : Colors.black,
-                        icon: const Icon(Icons.video_call_sharp)),
-                    IconButton(
-                        onPressed: () {
-                          setState(() {
-                            _activeMenuButton = 4;
-                          });
-                        },
-                        color: _activeMenuButton == 4
-                            ? Colors.blue[400]
-                            : Colors.black,
-                        icon: const Icon(Icons.notifications)),
-                    IconButton(onPressed: () {}, icon: const Icon(Icons.menu)),
-                  ],
-                ),
-                const SizedBox(height: 25),
-                Row(
-                  children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        image: const DecorationImage(
-                            fit: BoxFit.cover,
-                            image: NetworkImage(
-                                'https://yihun-alemayehu.netlify.app/images/profile-11.jpg')),
-                        color: Colors.black45,
-                        borderRadius: BorderRadius.circular(5),
-                      ),
-                      width: 45,
-                      height: 45,
-                    ),
-                    const SizedBox(width: 20),
-                    const SizedBox(
-                      height: 34,
-                      width: 260,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          suffixIcon: Icon(
-                            Icons.photo_library_outlined,
-                            color: Color.fromARGB(177, 158, 158, 158),
-                          ),
-                          fillColor: Color.fromARGB(9, 0, 0, 0),
-                          filled: true,
-                          hintText: "what is on your mind?",
-                          hintStyle: TextStyle(
-                              color: Color.fromARGB(125, 0, 0, 0),
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12,
-                              fontStyle: FontStyle.italic),
-                          border: OutlineInputBorder(
-                            borderSide: BorderSide.none,
-                            borderRadius: BorderRadius.all(Radius.circular(25)),
+                    const Row(
+                      children: [
+                        Text(
+                          "faceBook",
+                          style: TextStyle(
+                            color: Color.fromARGB(255, 38, 157, 255),
+                            fontSize: 20,
                           ),
                         ),
-                      ),
+                        Spacer(),
+                        Icon(Icons.facebook_sharp,
+                            size: 34, color: Color.fromARGB(255, 0, 140, 255)),
+                      ],
                     ),
-                    const SizedBox(width: 20),
-                    Container(
-                      height: 34,
-                      width: 34,
-                      decoration: BoxDecoration(
-                        color: const Color.fromARGB(63, 158, 158, 158),
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                      child: IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.search),
-                          color: Colors.black),
+                    const SizedBox(height: 25),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      children: [
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _activeMenuButton = 0;
+                              });
+                            },
+                            color: _activeMenuButton == 0
+                                ? Colors.blue[400]
+                                : Colors.black,
+                            icon: const Icon(Icons.home)),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _activeMenuButton = 1;
+                              });
+                            },
+                            color: _activeMenuButton == 1
+                                ? Colors.blue[400]
+                                : Colors.black,
+                            icon: const Icon(Icons.group)),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _activeMenuButton = 2;
+                              });
+                            },
+                            color: _activeMenuButton == 2
+                                ? Colors.blue[400]
+                                : Colors.black,
+                            icon: const Icon(Icons.person)),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _activeMenuButton = 3;
+                                print(_activeMenuButton);
+                              });
+                            },
+                            color: _activeMenuButton == 3
+                                ? Colors.blue[400]
+                                : Colors.black,
+                            icon: const Icon(Icons.video_call_sharp)),
+                        IconButton(
+                            onPressed: () {
+                              setState(() {
+                                _activeMenuButton = 4;
+                              });
+                            },
+                            color: _activeMenuButton == 4
+                                ? Colors.blue[400]
+                                : Colors.black,
+                            icon: const Icon(Icons.notifications)),
+                        IconButton(
+                            onPressed: () {}, icon: const Icon(Icons.menu)),
+                      ],
+                    ),
+                    const SizedBox(height: 25),
+                    Row(
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                            image: const DecorationImage(
+                                fit: BoxFit.cover,
+                                image: NetworkImage(
+                                    'https://yihun-alemayehu.netlify.app/images/profile-11.jpg')),
+                            color: Colors.black45,
+                            borderRadius: BorderRadius.circular(5),
+                          ),
+                          width: 45,
+                          height: 45,
+                        ),
+                        const SizedBox(width: 20),
+                        const SizedBox(
+                          height: 34,
+                          width: 260,
+                          child: TextField(
+                            decoration: InputDecoration(
+                              suffixIcon: Icon(
+                                Icons.photo_library_outlined,
+                                color: Color.fromARGB(177, 158, 158, 158),
+                              ),
+                              fillColor: Color.fromARGB(9, 0, 0, 0),
+                              filled: true,
+                              hintText: "what is on your mind?",
+                              hintStyle: TextStyle(
+                                  color: Color.fromARGB(125, 0, 0, 0),
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 12,
+                                  fontStyle: FontStyle.italic),
+                              border: OutlineInputBorder(
+                                borderSide: BorderSide.none,
+                                borderRadius:
+                                    BorderRadius.all(Radius.circular(25)),
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: 20),
+                        Container(
+                          height: 34,
+                          width: 34,
+                          decoration: BoxDecoration(
+                            color: const Color.fromARGB(63, 158, 158, 158),
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                          child: IconButton(
+                              onPressed: () {},
+                              icon: const Icon(Icons.search),
+                              color: Colors.black),
+                        ),
+                      ],
                     ),
                   ],
                 ),
-                SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      const SizedBox(height: 30),
-                      SingleChildScrollView(
-                        // scrollDirection: Axis.horizontal,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            ActionContainer(
-                              icon: Icons.video_camera_front_sharp,
-                              // iconColor: const Color.fromARGB(108, 17, 179, 41),
-                              // bgColor: const Color.fromARGB(33, 17, 179, 41),
-                              title: "Video",
-                            ),
-                            ActionContainer(
-                              iconColor: const Color.fromARGB(255, 17, 179, 41),
-                              bgColor: const Color.fromARGB(33, 17, 179, 41),
-                              icon: Icons.group,
-                              title: "Group",
-                            ),
-                            ActionContainer(
-                              iconColor: const Color.fromARGB(255, 179, 17, 17),
-                              bgColor: const Color.fromARGB(32, 179, 17, 17),
-                              icon: Icons.room,
-                              title: "Room",
-                            ),
-                            ActionContainer(
-                              iconColor: const Color.fromARGB(255, 25, 17, 179),
-                              bgColor: const Color.fromARGB(32, 17, 39, 179),
-                              icon: Icons.movie_creation,
-                              title: "Movie",
-                            )
-                          ],
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        const SizedBox(height: 30),
+                        SingleChildScrollView(
+                          // scrollDirection: Axis.horizontal,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              ActionContainer(
+                                icon: Icons.video_camera_front_sharp,
+                                // iconColor: const Color.fromARGB(108, 17, 179, 41),
+                                // bgColor: const Color.fromARGB(33, 17, 179, 41),
+                                title: "Video",
+                              ),
+                              ActionContainer(
+                                iconColor:
+                                    const Color.fromARGB(255, 17, 179, 41),
+                                bgColor: const Color.fromARGB(33, 17, 179, 41),
+                                icon: Icons.group,
+                                title: "Group",
+                              ),
+                              ActionContainer(
+                                iconColor:
+                                    const Color.fromARGB(255, 179, 17, 17),
+                                bgColor: const Color.fromARGB(32, 179, 17, 17),
+                                icon: Icons.room,
+                                title: "Room",
+                              ),
+                              ActionContainer(
+                                iconColor:
+                                    const Color.fromARGB(255, 25, 17, 179),
+                                bgColor: const Color.fromARGB(32, 17, 39, 179),
+                                icon: Icons.movie_creation,
+                                title: "Movie",
+                              )
+                            ],
+                          ),
                         ),
-                      ),
-                      const SizedBox(height: 30),
-                      SingleChildScrollView(
+                        const SizedBox(height: 30),
+                        SingleChildScrollView(
                           scrollDirection: Axis.horizontal,
                           child: SizedBox(
                             height: 159,
@@ -223,10 +230,83 @@ class _MainAppState extends State<MainApp> {
                                 },
                               ),
                             ),
-                          ))
-                    ],
+                          ),
+                        ),
+                        const SizedBox(height: 30),
+                        Container(
+                          height: 362,
+                          width: double.infinity,
+                          color: const Color.fromARGB(0, 0, 0, 0),
+                          child: Column(
+                            children: [
+                              Padding(
+                                padding: const EdgeInsets.all(8.0),
+                                child: Row(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    SizedBox(
+                                      height: 70,
+                                      child: Container(
+                                        width: 70,
+                                        decoration: BoxDecoration(
+                                          image: const DecorationImage(
+                                              fit: BoxFit.cover,
+                                              image: NetworkImage(
+                                                  "https://images.unsplash.com/photo-1508002366005-75a695ee2d17?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGFwcHklMjB3b21hbnxlbnwwfHwwfHx8MA%3D%3D")),
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                    const SizedBox(
+                                      child: Column(
+                                        children: [
+                                          Text(
+                                            "Header of the current",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w700),
+                                          ),
+                                          Text(
+                                            "Header of the current",
+                                            style: TextStyle(
+                                                fontWeight: FontWeight.w400,
+                                                fontSize: 10,
+                                                color: Colors.grey),
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    const Spacer(),
+                                    GestureDetector(
+                                      child:
+                                          const Icon(Icons.more_vert_outlined),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              GestureDetector(
+                                child: Container(
+                                  height: 230,
+                                  width: double.infinity,
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                          "https://static.vecteezy.com/system/resources/thumbnails/030/798/365/small_2x/beautiful-asian-girl-wearing-over-size-hoodie-in-casual-style-ai-generative-photo.jpg"),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
-                )
+                ),
               ],
             ),
           ),
@@ -261,7 +341,7 @@ class StoryContainer extends StatelessWidget {
           ),
           Positioned(
             bottom: -9,
-            right: 50,
+            right: 40,
             child: WatchAddStory(
               owner: owner,
               url: photoUrl,
