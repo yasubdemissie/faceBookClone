@@ -1,7 +1,9 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(const MainApp());
@@ -35,21 +37,25 @@ class _MainAppState extends State<MainApp> {
               children: [
                 Column(
                   children: [
-                    const Row(
-                      children: [
-                        Text(
-                          "faceBook",
-                          style: TextStyle(
-                            color: Color.fromARGB(255, 38, 157, 255),
-                            fontSize: 20,
+                    const Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(
+                        children: [
+                          Text(
+                            "faceBook",
+                            style: TextStyle(
+                              color: Color.fromARGB(255, 38, 157, 255),
+                              fontSize: 20,
+                            ),
                           ),
-                        ),
-                        Spacer(),
-                        Icon(Icons.facebook_sharp,
-                            size: 34, color: Color.fromARGB(255, 0, 140, 255)),
-                      ],
+                          Spacer(),
+                          Icon(Icons.facebook_sharp,
+                              size: 34,
+                              color: Color.fromARGB(255, 0, 140, 255)),
+                        ],
+                      ),
                     ),
-                    const SizedBox(height: 25),
+                    const SizedBox(height: 15),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
@@ -108,71 +114,75 @@ class _MainAppState extends State<MainApp> {
                             onPressed: () {}, icon: const Icon(Icons.menu)),
                       ],
                     ),
-                    const SizedBox(height: 25),
-                    Row(
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            image: const DecorationImage(
-                                fit: BoxFit.cover,
-                                image: NetworkImage(
-                                    'https://yihun-alemayehu.netlify.app/images/profile-11.jpg')),
-                            color: Colors.black45,
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          width: 45,
-                          height: 45,
-                        ),
-                        const SizedBox(width: 20),
-                        const SizedBox(
-                          height: 34,
-                          width: 260,
-                          child: TextField(
-                            decoration: InputDecoration(
-                              suffixIcon: Icon(
-                                Icons.photo_library_outlined,
-                                color: Color.fromARGB(177, 158, 158, 158),
-                              ),
-                              fillColor: Color.fromARGB(9, 0, 0, 0),
-                              filled: true,
-                              hintText: "what is on your mind?",
-                              hintStyle: TextStyle(
-                                  color: Color.fromARGB(125, 0, 0, 0),
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 12,
-                                  fontStyle: FontStyle.italic),
-                              border: OutlineInputBorder(
-                                borderSide: BorderSide.none,
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(25)),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: 20),
-                        Container(
-                          height: 34,
-                          width: 34,
-                          decoration: BoxDecoration(
-                            color: const Color.fromARGB(63, 158, 158, 158),
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          child: IconButton(
-                              onPressed: () {},
-                              icon: const Icon(Icons.search),
-                              color: Colors.black),
-                        ),
-                      ],
-                    ),
+                    const SizedBox(height: 15),
                   ],
                 ),
                 Expanded(
                   child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
                     child: Column(
                       children: [
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 10),
+                          child: Row(
+                            children: [
+                              Container(
+                                decoration: BoxDecoration(
+                                  image: const DecorationImage(
+                                      fit: BoxFit.cover,
+                                      image: NetworkImage(
+                                          'https://yihun-alemayehu.netlify.app/images/profile-11.jpg')),
+                                  color: Colors.black45,
+                                  borderRadius: BorderRadius.circular(5),
+                                ),
+                                width: 45,
+                                height: 45,
+                              ),
+                              const SizedBox(width: 20),
+                              const SizedBox(
+                                height: 34,
+                                width: 260,
+                                child: TextField(
+                                  decoration: InputDecoration(
+                                    suffixIcon: Icon(
+                                      Icons.photo_library_outlined,
+                                      color: Color.fromARGB(177, 158, 158, 158),
+                                    ),
+                                    fillColor: Color.fromARGB(9, 0, 0, 0),
+                                    filled: true,
+                                    hintText: "what is on your mind?",
+                                    hintStyle: TextStyle(
+                                        color: Color.fromARGB(125, 0, 0, 0),
+                                        fontWeight: FontWeight.w400,
+                                        fontSize: 12,
+                                        fontStyle: FontStyle.italic),
+                                    border: OutlineInputBorder(
+                                      borderSide: BorderSide.none,
+                                      borderRadius:
+                                          BorderRadius.all(Radius.circular(25)),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(width: 20),
+                              Container(
+                                height: 34,
+                                width: 34,
+                                decoration: BoxDecoration(
+                                  color:
+                                      const Color.fromARGB(63, 158, 158, 158),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: IconButton(
+                                    onPressed: () {},
+                                    icon: const Icon(Icons.search),
+                                    color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
                         const SizedBox(height: 30),
                         SingleChildScrollView(
-                          // scrollDirection: Axis.horizontal,
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
@@ -211,97 +221,40 @@ class _MainAppState extends State<MainApp> {
                           scrollDirection: Axis.horizontal,
                           child: SizedBox(
                             height: 159,
-                            child: Row(
-                              children: List.generate(
-                                urls.length,
-                                (index) {
-                                  index == 0 ? owner = true : owner = false;
-                                  return Row(
-                                    children: [
-                                      StoryContainer(
-                                        owner: owner,
-                                        photoUrl: urls[index],
-                                      ),
-                                      const SizedBox(
-                                        width: 5,
-                                      ),
-                                    ],
-                                  );
-                                },
+                            child: Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Row(
+                                children: List.generate(
+                                  urls.length,
+                                  (index) {
+                                    index == 0 ? owner = true : owner = false;
+                                    return Row(
+                                      children: [
+                                        StoryContainer(
+                                          owner: owner,
+                                          photoUrl: urls[index],
+                                        ),
+                                        const SizedBox(
+                                          width: 5,
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(height: 30),
-                        Container(
-                          height: 362,
-                          width: double.infinity,
-                          color: const Color.fromARGB(0, 0, 0, 0),
-                          child: Column(
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    SizedBox(
-                                      height: 70,
-                                      child: Container(
-                                        width: 70,
-                                        decoration: BoxDecoration(
-                                          image: const DecorationImage(
-                                              fit: BoxFit.cover,
-                                              image: NetworkImage(
-                                                  "https://images.unsplash.com/photo-1508002366005-75a695ee2d17?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGFwcHklMjB3b21hbnxlbnwwfHwwfHx8MA%3D%3D")),
-                                          borderRadius:
-                                              BorderRadius.circular(10),
-                                        ),
-                                      ),
-                                    ),
-                                    const SizedBox(
-                                      width: 20,
-                                    ),
-                                    const SizedBox(
-                                      child: Column(
-                                        children: [
-                                          Text(
-                                            "Header of the current",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w700),
-                                          ),
-                                          Text(
-                                            "Header of the current",
-                                            style: TextStyle(
-                                                fontWeight: FontWeight.w400,
-                                                fontSize: 10,
-                                                color: Colors.grey),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                    const Spacer(),
-                                    GestureDetector(
-                                      child:
-                                          const Icon(Icons.more_vert_outlined),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              GestureDetector(
-                                child: Container(
-                                  height: 230,
-                                  width: double.infinity,
-                                  decoration: const BoxDecoration(
-                                    image: DecorationImage(
-                                      fit: BoxFit.cover,
-                                      image: NetworkImage(
-                                          "https://static.vecteezy.com/system/resources/thumbnails/030/798/365/small_2x/beautiful-asian-girl-wearing-over-size-hoodie-in-casual-style-ai-generative-photo.jpg"),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            ],
-                          ),
+                        Column(
+                          children: List.generate(4, (index) {
+                            return const Column(
+                              children: [
+                                PostContainer(),
+                                SizedBox(height: 2),
+                              ],
+                            );
+                          }),
                         ),
                       ],
                     ),
@@ -311,6 +264,118 @@ class _MainAppState extends State<MainApp> {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class PostContainer extends StatelessWidget {
+  const PostContainer({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      decoration: BoxDecoration(
+        border: Border.all(
+          width: 0.1,
+        ),
+      ),
+      width: double.infinity,
+      child: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: 70,
+                  child: Container(
+                    width: 70,
+                    decoration: BoxDecoration(
+                      image: const DecorationImage(
+                          fit: BoxFit.cover,
+                          image: NetworkImage(
+                              "https://images.unsplash.com/photo-1508002366005-75a695ee2d17?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8aGFwcHklMjB3b21hbnxlbnwwfHwwfHx8MA%3D%3D")),
+                      borderRadius: BorderRadius.circular(10),
+                    ),
+                  ),
+                ),
+                const SizedBox(
+                  width: 20,
+                ),
+                const SizedBox(
+                  child: Column(
+                    children: [
+                      Text(
+                        "Header of the current",
+                        style: TextStyle(fontWeight: FontWeight.w700),
+                      ),
+                      Text(
+                        "Header of the current",
+                        style: TextStyle(
+                            fontWeight: FontWeight.w400,
+                            fontSize: 10,
+                            color: Colors.grey),
+                      ),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                GestureDetector(
+                  child: const Icon(Icons.more_vert_outlined),
+                ),
+              ],
+            ),
+          ),
+          GestureDetector(
+            child: Container(
+              height: 350,
+              width: double.infinity,
+              decoration: const BoxDecoration(
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: NetworkImage(
+                      "https://static.vecteezy.com/system/resources/thumbnails/030/798/365/small_2x/beautiful-asian-girl-wearing-over-size-hoodie-in-casual-style-ai-generative-photo.jpg"),
+                ),
+              ),
+            ),
+          ),
+          const SizedBox(height: 10),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 10),
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  "assets/icons/like.svg",
+                  height: 20,
+                  width: 20,
+                  colorFilter:
+                      const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+                ),
+                const SizedBox(width: 10),
+                SvgPicture.asset(
+                  "assets/icons/comment.svg",
+                  height: 20,
+                  width: 20,
+                  colorFilter:
+                      const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+                ),
+                const SizedBox(width: 10),
+                SvgPicture.asset(
+                  "assets/icons/share.svg",
+                  height: 20,
+                  width: 20,
+                  colorFilter:
+                      const ColorFilter.mode(Colors.black, BlendMode.srcIn),
+                ),
+              ],
+            ),
+          ),
+        ],
       ),
     );
   }
